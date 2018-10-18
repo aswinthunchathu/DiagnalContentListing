@@ -9,40 +9,47 @@ import { fetchContent } from '../actions/contentList';
 
 class ContentList extends Component {
 
-    
   static propTypes = {
     contentList: PropTypes.shape({
-      fetching : PropTypes.bool.isRequired,
-      fetched : PropTypes.bool.isRequired,
-      hasMore : PropTypes.bool.isRequired,
-      data : PropTypes.object.isRequired
+      fetching: PropTypes.bool.isRequired,
+      fetched: PropTypes.bool.isRequired,
+      hasMore: PropTypes.bool.isRequired,
+      data: PropTypes.object.isRequired
     }).isRequired
   }
 
-  render() {
-    let { fetched, data, error, hasMore, fetching } = this.props.contentList;
-    let { content } = fetched ? data["content-items"] : [];
+  renderContent() {
+    let { contentList: { data, fetched }, filter } = this.props;
+    let content = fetched ? data["content-items"].content : [];
+    let list = content;
+    if (filter.text !== "") {
+      list = content.filter(item => ((item.name.toLocaleLowerCase()).indexOf(filter.text.toLocaleLowerCase()) !== -1))
+    }
 
+    return list.map((item, index) => (
+      <div className="w-1/3 pl-2 pr-2 pb-8" key={index}>
+        <Tile image={`assets/Slices/${item["poster-image"]}`} title={item.name} />
+      </div>
+    ));
+  }
+
+  render() {
+    let { error, hasMore, fetching, fetched } = this.props.contentList;
+    let content = this.renderContent();
     return (
       <div className="container m-auto pl-2 pr-2">
-        {
-          error && (<Error>{error.maskWith}</Error>)
-        }
-        <LazyLoader
-        loadData={this.props.fetchContent}
-        hasMore={hasMore}
-        isFetching={fetching}
-        hasError={error}>
+        
+        {error && (<Error>{error.maskWith}</Error>)}
+
+        {fetched && content.length === 0 && <div className="text-white text-3xl text-center">No results found.</div>}
+        
+        <LazyLoader loadData={this.props.fetchContent} hasMore={hasMore}
+          isFetching={fetching} hasError={error}>
           <div className="flex flex-wrap">
-            {
-              content && content.map((item, index) => (
-                <div className="w-1/3 pl-2 pr-2 pb-8" key={index}>
-                  <Tile image={`assets/Slices/${item["poster-image"]}`} title={item.name} />
-                </div>
-              ))
-            }
+            {content.length > 0 && content}            
           </div>
         </LazyLoader>
+
       </div>
     );
   }
@@ -51,6 +58,7 @@ class ContentList extends Component {
 //map state supplied by redux to props
 const mapStateToProps = (state, ownProps) => ({
   contentList: state.contentList.list,
+  filter: state.contentList.filter
 });
 
 //map thunk actions with props

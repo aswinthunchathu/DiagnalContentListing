@@ -1,5 +1,6 @@
 import {
-    FETCH_CONTENT, FETCH_CONTENT_SUCCESS, FETCH_CONTENT_ERROR
+    FETCH_CONTENT, FETCH_CONTENT_SUCCESS, FETCH_CONTENT_ERROR,
+    APPLY_FILTER, REMOVE_FILTER
 } from '../constants/actionTypes';
 import {API, query_page} from '../constants/api';
 import {ERROR_MESSAGE} from '../constants';
@@ -51,4 +52,9 @@ export const fetchContent = () => (dispatch, getState) => {
         }})
     )
 
+}
+
+/*This function is triggered on every search*/
+export const onSearch = (text) => (dispatch, getState) => {
+    text !== "" ? dispatch({type : APPLY_FILTER, payload: text}) : dispatch({type : REMOVE_FILTER})
 }

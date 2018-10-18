@@ -6,6 +6,7 @@ specified in it.
 import React, { Component } from 'react';
 import Loader from '../components/Loader';
 import PropTypes from 'prop-types';
+import {THRESHOLD} from '../constants';
 
 class LazyLoader extends Component {
 
@@ -33,7 +34,7 @@ class LazyLoader extends Component {
       return;
     }
 
-    if (document.documentElement.offsetHeight - window.innerHeight - document.documentElement.scrollTop < 200) {
+    if (document.documentElement.offsetHeight - window.innerHeight - document.documentElement.scrollTop < THRESHOLD) {
       this.props.loadData();
     }
   }

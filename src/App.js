@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 
 import ContentList from './containers/ContentList';
-import TopBar from './containers/TopBar';
+import Header from './containers/Header';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <TopBar></TopBar>
-        <ContentList></ContentList>
-      </div>
+      <>
+        <Header/>
+        <ContentList/>
+      </>
     );
   }
 }

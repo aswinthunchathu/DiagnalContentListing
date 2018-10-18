@@ -13,7 +13,9 @@ body{
 }
 
 .input-search {
-    @apply h-10 p-3 bg-transparent text-white text-2xl outline-none;
+    @apply h-12 p-3 text-2xl outline-none absolute;
+    top: -5px;
+    left: 0;
 }
 
 .search-bar{
@@ -79,4 +81,31 @@ body{
     100% {
         transform: translate(19px, 0);
     }
+}
+
+.close-icon span{
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    display: inline-block;
+    position: absolute;
+}
+
+.close-icon span:first-child{
+    transform: rotate(45deg);
+}
+
+.close-icon span:last-child{
+    transform: rotate(-45deg);
+}
+
+.search-close{
+    @apply absolute h-12 p-3 w-12;
+    right: 0;
+    top:-5px;
+}
+
+.search-close.close-icon span{
+    left: 13px;
+    top: 23px;
 }

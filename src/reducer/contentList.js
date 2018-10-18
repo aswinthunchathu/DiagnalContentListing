@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 
 import {
-    FETCH_CONTENT, FETCH_CONTENT_SUCCESS, FETCH_CONTENT_ERROR
+    FETCH_CONTENT, FETCH_CONTENT_SUCCESS, FETCH_CONTENT_ERROR,
+    APPLY_FILTER, REMOVE_FILTER
 } from '../constants/actionTypes';
 
 const list = ( 
@@ -43,8 +44,31 @@ const list = (
     }
 }
 
+const filter = ( 
+    state = {
+        text : "",
+}, action) => {
+    switch (action.type) {
+        case APPLY_FILTER : {
+            return {
+                ...state,
+                text : action.payload
+            }
+        }
+        case REMOVE_FILTER : {
+            return {
+                ...state,
+                text : ""
+            }
+        }
+        default:
+            return state;
+    }
+}
+
 const contentList = combineReducers({
-    list
+    list,
+    filter
 });
 
 export default contentList;

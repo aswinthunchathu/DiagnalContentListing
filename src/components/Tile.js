@@ -34,15 +34,15 @@ class Tile extends Component {
     const {image, title} = this.props;
     const {isImageLoaded} = this.state;
     return (
-      <div>
+      <div className="block">
         {
             /*showing placeholder image initialy*/
           !isImageLoaded && (
-            <img src={placeHolderImage} alt={title} style={{maxWidth:'182px'}}/>
+            <img src={placeHolderImage} alt={title} className="max-w-full"/>
           )
         }
         <img src={image} alt={title} className={`max-w-full ${!isImageLoaded ? "hidden" : ''}`} onLoad={this.onImageLoad.bind(this)}/>
-        <p className="pt-2 text-white text-lg truncate">{title}</p>
+        <p className="pt-2 text-white truncate">{title}</p>
       </div>
     );
   }
