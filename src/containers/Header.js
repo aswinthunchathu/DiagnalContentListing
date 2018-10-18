@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import SearchBox from '../components/SearchBox';
 import { onSearch } from '../actions/contentList';
 import imgSearch from '../assets/Slices/search.png';
-import imgBack from '../assets/Slices/Back.png'
+import imgBack from '../assets/Slices/Back.png';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Header extends Component {
 
@@ -28,9 +29,18 @@ class Header extends Component {
     render() {
         return (
             <div className="container m-auto search-bar">
-                {this.state.toggleSearch && <SearchBox text={this.props.filter.text}
-                    onClear={this.handleClear.bind(this)}
-                    handleSearch={(event) => this.props.onSearch(event.currentTarget.value)}></SearchBox>}
+
+                <ReactCSSTransitionGroup
+                    transitionName="fade"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={300}>
+                    {this.state.toggleSearch && (
+                        <SearchBox text={this.props.filter.text}
+                        onClear={this.handleClear.bind(this)}
+                        handleSearch={(event) => this.props.onSearch(event.currentTarget.value)}></SearchBox>
+                    )}
+                </ReactCSSTransitionGroup>
+                
                 <div className="flex">
                     <button title="Search" type="button" className="pr-2 outline-none">
                         <img className="w-8" src={imgBack} alt="Search" />

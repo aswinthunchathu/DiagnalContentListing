@@ -84,11 +84,9 @@ body{
 }
 
 .close-icon span{
+    @apply absolute inline-block .bg-pitch-black;
     width: 30px;
     height: 3px;
-    background-color: #333;
-    display: inline-block;
-    position: absolute;
 }
 
 .close-icon span:first-child{
@@ -108,4 +106,22 @@ body{
 .search-close.close-icon span{
     left: 13px;
     top: 23px;
+}
+
+.fade-enter {
+    opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.fade-leave {
+    opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+    opacity: 0.01;
+    transition: opacity 200ms ease-in;
 }
