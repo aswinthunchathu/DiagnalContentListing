@@ -41,7 +41,7 @@ class Header extends Component {
                     )}
                 </ReactCSSTransitionGroup>
                 
-                <div className="flex">
+                <div className="flex justify-between">
                     <button title="Search" type="button" className="pr-2 outline-none">
                         <img className="w-8" src={imgBack} alt="Search" />
                     </button>

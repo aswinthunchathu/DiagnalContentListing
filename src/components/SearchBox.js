@@ -16,7 +16,7 @@ class SearchBox extends Component {
     render() {
         return (
             <div className="relative">
-                <input type="text" onChange={this.props.handleSearch}
+                <input type="text" onChange={this.props.handleSearch} autoFocus={true}
                     value={this.props.text ? this.props.text : ""} placeholder="Search"
                     className="input-search w-full block" />
                 <button type="button" className="search-close close-icon" onClick={this.props.onClear}>

@@ -18,20 +18,44 @@ class ContentList extends Component {
     }).isRequired
   }
 
+  renderCard(key, item){
+    return (<div className="w-1/3 pl-2 pr-2 pb-8" key={key}>
+        <Tile image={`assets/Slices/${item["poster-image"]}`} title={item.name} />
+      </div>);
+  }
+
   renderContent() {
     let { contentList: { data, fetched }, filter } = this.props;
     let content = fetched ? data["content-items"].content : [];
-    let list = content;
-    if (filter.text !== "") {
-      list = content.filter(item => ((item.name.toLocaleLowerCase()).indexOf(filter.text.toLocaleLowerCase()) !== -1))
+    let list = [];
+
+    for(let i = 0; i < content.length; i++){
+      if (filter.text !== "") {
+        (content[i].name.toLocaleLowerCase()).indexOf(filter.text.toLocaleLowerCase()) !== -1 &&
+        list.push(this.renderCard(i, content[i]));
+      }else{
+        list.push(this.renderCard(i, content[i]));
+      }
     }
 
-    return list.map((item, index) => (
-      <div className="w-1/3 pl-2 pr-2 pb-8" key={index}>
-        <Tile image={`assets/Slices/${item["poster-image"]}`} title={item.name} />
-      </div>
-    ));
+    return list;
   }
+
+  // renderContent() {
+  //   let { contentList: { data, fetched }, filter } = this.props;
+  //   let content = fetched ? data["content-items"].content : [];
+  //   let list = content;
+
+  //   if (filter.text !== "") {
+  //     list = content.filter(item => ((item.name.toLocaleLowerCase()).indexOf(filter.text.toLocaleLowerCase()) !== -1))
+  //   }
+
+  //   return list.map((item, index) => (
+  //     <div className="w-1/3 pl-2 pr-2 pb-8" key={`${item["poster-image"]}-${index}-${item.name}`}>
+  //       <Tile image={`assets/Slices/${item["poster-image"]}`} title={item.name} />
+  //     </div>
+  //   ));
+  // }
 
   render() {
     let { error, hasMore, fetching, fetched } = this.props.contentList;
