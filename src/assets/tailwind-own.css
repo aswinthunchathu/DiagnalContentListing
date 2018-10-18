@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    @apply bg-pitch-black font-titilliumweb;
+}
+
+body{
+    padding-top: 85px;
+}
+
+.input-search {
+    @apply h-10 p-3 bg-transparent text-white text-2xl outline-none;
+}
+
+.search-bar{
+    @apply pl-4 pr-4 pb-6 pt-6 fixed bg-center;
+    top:0;
+    background-image: url("assets/Slices/nav_bar.png");
+}
+
+.lds-ellipsis {
+    @apply inline-block relative;
+    width: 64px;
+}
+
+.lds-ellipsis div {
+    @apply inline-block absolute rounded-full bg-white;
+    width: 11px;
+    height: 11px;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+    left: 6px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+    left: 6px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+    left: 26px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+    left: 45px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(19px, 0);
+    }
+}
