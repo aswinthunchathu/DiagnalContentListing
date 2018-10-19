@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import {
     FETCH_CONTENT, FETCH_CONTENT_SUCCESS, FETCH_CONTENT_ERROR,
-    APPLY_FILTER, REMOVE_FILTER
+    APPLY_FILTER, REMOVE_FILTER, FETCH_CACHED_CONTENT
 } from '../constants/actionTypes';
 
 const list = ( 
@@ -21,6 +21,7 @@ const list = (
                 fetching : true
             }
         }
+        case FETCH_CACHED_CONTENT :
         case FETCH_CONTENT_SUCCESS : {
             return {
                 ...state,
