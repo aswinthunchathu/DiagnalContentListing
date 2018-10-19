@@ -47,86 +47,8 @@ let colors = {
   'transparent': 'transparent',
   'pitch-black' : "#000000",
   'black': '#22292f',
-  'grey-darkest': '#3d4852',
-  'grey-darker': '#606f7b',
-  'grey-dark': '#8795a1',
-  'grey': '#b8c2cc',
-  'grey-light': '#dae1e7',
-  'grey-lighter': '#f1f5f8',
-  'grey-lightest': '#f8fafc',
   'white': '#ffffff',
-
-  'red-darkest': '#3b0d0c',
-  'red-darker': '#621b18',
-  'red-dark': '#cc1f1a',
   'red': '#e3342f',
-  'red-light': '#ef5753',
-  'red-lighter': '#f9acaa',
-  'red-lightest': '#fcebea',
-
-  'orange-darkest': '#462a16',
-  'orange-darker': '#613b1f',
-  'orange-dark': '#de751f',
-  'orange': '#f6993f',
-  'orange-light': '#faad63',
-  'orange-lighter': '#fcd9b6',
-  'orange-lightest': '#fff5eb',
-
-  'yellow-darkest': '#453411',
-  'yellow-darker': '#684f1d',
-  'yellow-dark': '#f2d024',
-  'yellow': '#ffed4a',
-  'yellow-light': '#fff382',
-  'yellow-lighter': '#fff9c2',
-  'yellow-lightest': '#fcfbeb',
-
-  'green-darkest': '#0f2f21',
-  'green-darker': '#1a4731',
-  'green-dark': '#1f9d55',
-  'green': '#38c172',
-  'green-light': '#51d88a',
-  'green-lighter': '#a2f5bf',
-  'green-lightest': '#e3fcec',
-
-  'teal-darkest': '#0d3331',
-  'teal-darker': '#20504f',
-  'teal-dark': '#38a89d',
-  'teal': '#4dc0b5',
-  'teal-light': '#64d5ca',
-  'teal-lighter': '#a0f0ed',
-  'teal-lightest': '#e8fffe',
-
-  'blue-darkest': '#12283a',
-  'blue-darker': '#1c3d5a',
-  'blue-dark': '#2779bd',
-  'blue': '#3490dc',
-  'blue-light': '#6cb2eb',
-  'blue-lighter': '#bcdefa',
-  'blue-lightest': '#eff8ff',
-
-  'indigo-darkest': '#191e38',
-  'indigo-darker': '#2f365f',
-  'indigo-dark': '#5661b3',
-  'indigo': '#6574cd',
-  'indigo-light': '#7886d7',
-  'indigo-lighter': '#b2b7ff',
-  'indigo-lightest': '#e6e8ff',
-
-  'purple-darkest': '#21183c',
-  'purple-darker': '#382b5f',
-  'purple-dark': '#794acf',
-  'purple': '#9561e2',
-  'purple-light': '#a779e9',
-  'purple-lighter': '#d6bbfc',
-  'purple-lightest': '#f3ebff',
-
-  'pink-darkest': '#451225',
-  'pink-darker': '#6f213f',
-  'pink-dark': '#eb5286',
-  'pink': '#f66d9b',
-  'pink-light': '#fa7ea8',
-  'pink-lighter': '#ffbbca',
-  'pink-lightest': '#ffebef',
 }
 
 module.exports = {
@@ -734,33 +656,6 @@ module.exports = {
     '32': '8rem',
   },
 
-
-  /*
-  |-----------------------------------------------------------------------------
-  | Shadows                                https://tailwindcss.com/docs/shadows
-  |-----------------------------------------------------------------------------
-  |
-  | Here is where you define your shadow utilities. As you can see from
-  | the defaults we provide, it's possible to apply multiple shadows
-  | per utility using comma separation.
-  |
-  | If a `default` shadow is provided, it will be made available as the non-
-  | suffixed `.shadow` utility.
-  |
-  | Class name: .shadow-{size?}
-  |
-  */
-
-  shadows: {
-    default: '0 2px 4px 0 rgba(0,0,0,0.10)',
-    'md': '0 4px 8px 0 rgba(0,0,0,0.12), 0 2px 4px 0 rgba(0,0,0,0.08)',
-    'lg': '0 15px 30px 0 rgba(0,0,0,0.11), 0 5px 15px 0 rgba(0,0,0,0.08)',
-    'inner': 'inset 0 2px 4px 0 rgba(0,0,0,0.06)',
-    'outline': '0 0 0 3px rgba(52,144,220,0.5)',
-    'none': 'none',
-  },
-
-
   /*
   |-----------------------------------------------------------------------------
   | Z-index                                https://tailwindcss.com/docs/z-index
@@ -806,45 +701,6 @@ module.exports = {
     '100': '1',
   },
 
-
-  /*
-  |-----------------------------------------------------------------------------
-  | SVG fill                                   https://tailwindcss.com/docs/svg
-  |-----------------------------------------------------------------------------
-  |
-  | Here is where you define your SVG fill colors. By default we just provide
-  | `fill-current` which sets the fill to the current text color. This lets you
-  | specify a fill color using existing text color utilities and helps keep the
-  | generated CSS file size down.
-  |
-  | Class name: .fill-{name}
-  |
-  */
-
-  svgFill: {
-    'current': 'currentColor',
-  },
-
-
-  /*
-  |-----------------------------------------------------------------------------
-  | SVG stroke                                 https://tailwindcss.com/docs/svg
-  |-----------------------------------------------------------------------------
-  |
-  | Here is where you define your SVG stroke colors. By default we just provide
-  | `stroke-current` which sets the stroke to the current text color. This lets
-  | you specify a stroke color using existing text color utilities and helps
-  | keep the generated CSS file size down.
-  |
-  | Class name: .stroke-{name}
-  |
-  */
-
-  svgStroke: {
-    'current': 'currentColor',
-  },
-
-
   /*
   |-----------------------------------------------------------------------------
   | Modules                  https://tailwindcss.com/docs/configuration#modules
@@ -871,15 +727,15 @@ module.exports = {
     backgroundPosition: ['responsive'],
     backgroundRepeat: ['responsive'],
     backgroundSize: ['responsive'],
-    borderCollapse: [],
-    borderColors: ['responsive', 'hover', 'focus'],
+    //borderCollapse: [],
+    //borderColors: ['responsive', 'hover', 'focus'],
     borderRadius: ['responsive'],
     borderStyle: ['responsive'],
     borderWidths: ['responsive'],
     cursor: ['responsive'],
     display: ['responsive'],
     flexbox: ['responsive'],
-    float: ['responsive'],
+    //float: ['responsive'],
     fonts: ['responsive'],
     fontWeights: ['responsive', 'hover', 'focus'],
     height: ['responsive'],
@@ -890,24 +746,24 @@ module.exports = {
     maxWidth: ['responsive'],
     minHeight: ['responsive'],
     minWidth: ['responsive'],
-    negativeMargin: ['responsive'],
+    //negativeMargin: ['responsive'],
     opacity: ['responsive'],
     outline: ['focus'],
     overflow: ['responsive'],
     padding: ['responsive'],
-    pointerEvents: ['responsive'],
+    //pointerEvents: ['responsive'],
     position: ['responsive'],
-    resize: ['responsive'],
-    shadows: ['responsive', 'hover', 'focus'],
-    svgFill: [],
-    svgStroke: [],
-    tableLayout: ['responsive'],
+    //resize: ['responsive'],
+    //shadows: ['responsive', 'hover', 'focus'],
+    //svgFill: [],
+    //svgStroke: [],
+   // tableLayout: ['responsive'],
     textAlign: ['responsive'],
     textColors: ['responsive', 'hover', 'focus'],
     textSizes: ['responsive'],
     textStyle: ['responsive', 'hover', 'focus'],
-    tracking: ['responsive'],
-    userSelect: ['responsive'],
+   // tracking: ['responsive'],
+    //userSelect: ['responsive'],
     verticalAlign: ['responsive'],
     visibility: ['responsive'],
     whitespace: ['responsive'],
