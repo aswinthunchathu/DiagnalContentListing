@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
-
 import ContentList from './containers/ContentList';
 import Header from './containers/Header';
 
