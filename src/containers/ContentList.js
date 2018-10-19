@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import LazyLoader from '../components/LazyLoader';
 import Tile from '../components/Tile.js';
 import Error from '../components/Error';

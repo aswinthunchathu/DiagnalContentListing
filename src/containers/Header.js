@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import SearchBox from '../components/SearchBox';
 import { onSearch } from '../actions/contentList';
 import imgSearch from '../assets/Slices/search.png';
@@ -7,6 +8,13 @@ import imgBack from '../assets/Slices/Back.png';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Header extends Component {
+
+    static propTypes = {
+        heading: PropTypes.string,
+        filter: PropTypes.shape({
+            text : PropTypes.string
+        })
+      }
 
     constructor(props){
         super(props);
