@@ -59,7 +59,7 @@ To start the application run the below commands in the root folder where package
 
 ## Other Commands
 
-  **npm build**
+  **npm run build**
   This will trigger an optimised build
 
   **npm run deploy**
