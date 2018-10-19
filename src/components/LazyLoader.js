@@ -13,7 +13,7 @@ class LazyLoader extends Component {
   static propTypes = {
     hasMore: PropTypes.bool.isRequired,
     isFetching : PropTypes.bool.isRequired,
-    hasError: PropTypes.string,
+    hasError: PropTypes.object,
     loadData : PropTypes.func.isRequired
   }
     
