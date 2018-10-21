@@ -11,12 +11,13 @@ export const cachingDecorator = (func, sessionKey) => (key) => {
 
     if (cache && cache !== "" && cache !== undefined) {
         cache = jsonToMap(cache);
+
+        if (cache.has(key)) {
+            return cache.get(key);
+        }
+        
     } else {
         cache = new Map();
-    }
-
-    if (cache.has(key)) {
-        return cache.get(key);
     }
 
     let result = func.call(this, key);
@@ -25,8 +26,7 @@ export const cachingDecorator = (func, sessionKey) => (key) => {
         res => {
             cache.set(key, res);
             sessionStorage.setItem(sessionKey, mapToJson(cache));
-        },
-        err => {}
+        }
     )
 
     return result;

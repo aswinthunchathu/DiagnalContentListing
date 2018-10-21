@@ -6,4 +6,4 @@ export const API = axios.create({
     baseURL: BASE_URL
 });
 
-export const query_page = (page) => `CONTENTLISTINGPAGE-PAGE${page}.json`;
+export const serverRequestContent = (page) => API.get(`CONTENTLISTINGPAGE-PAGE${page}.json`);

@@ -2,19 +2,9 @@ import {
     FETCH_CONTENT, FETCH_CONTENT_SUCCESS, FETCH_CONTENT_ERROR,
     APPLY_FILTER, REMOVE_FILTER
 } from '../constants/actionTypes';
-import { API, query_page } from '../constants/api';
+import { serverRequestContent } from '../constants/api';
 import { ERROR_MESSAGE, CACHE_CONTENT_LIST } from '../constants';
 import { cachingDecorator } from '../util';
-
-/*This function checks whether there 
-is/are anymore page(s) to load
-@param object
-return boolean
-*/
-const shouldFetchMore = (data) => {
-    let noOfPages = Math.ceil(Number(data["total-content-items"]) / Number(data["page-size-requested"]));
-    return Number(data["page-num-requested"]) < noOfPages;
-}
 
 /*This function merges two specific arrays
 @param object
@@ -29,15 +19,6 @@ const mergeContent = (previous, current) => {
     return current;
 }
 
-/* API request */
-const serverRequest = async (page) => {
-    try {
-        return await API.get(query_page(page));
-    } catch (err) {
-        throw new Error(err);
-    }
-}
-
 /*This function fetch content from API
 and dispatch actions*/
 export const fetchContent = () => (dispatch, getState) => {
@@ -45,7 +26,7 @@ export const fetchContent = () => (dispatch, getState) => {
     const { list } = getState().contentList;
 
     //caching API request
-    const cachedServiceRequest = cachingDecorator(serverRequest, CACHE_CONTENT_LIST);
+    const cachedServiceRequest = cachingDecorator(serverRequestContent, CACHE_CONTENT_LIST);
     
     Promise.resolve(cachedServiceRequest(list.current + 1)).then(
         res => {
@@ -54,7 +35,6 @@ export const fetchContent = () => (dispatch, getState) => {
             dispatch({ 
                 type: FETCH_CONTENT_SUCCESS, 
                 payload:  mergedData, 
-                hasMore : shouldFetchMore(data), 
                 current : list.current + 1
             });
         }, 

@@ -11,7 +11,6 @@ const list = (
     fetched: false,
     current : 0,
     data: {},
-    hasMore : false,
     error: null
 }, action) => {
     switch (action.type) {
@@ -70,5 +69,16 @@ const contentList = combineReducers({
     list,
     filter
 });
+
+/*This is a selector function that checks whether there 
+is/are anymore page(s) to load
+@param state : object
+return boolean
+*/
+export const selectorHasMorePages = (state) => {
+    let {data} = state.list;
+    let noOfPages = Math.ceil(Number(data["total-content-items"]) / Number(data["page-size-requested"]));
+    return Number(data["page-num-requested"]) < noOfPages;
+}
 
 export default contentList;

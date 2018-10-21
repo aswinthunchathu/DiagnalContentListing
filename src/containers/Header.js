@@ -30,8 +30,8 @@ class Header extends Component {
     }
 
     handleClear() {
-        this.props.onSearch("");
         this.toggleSerachBox();
+        this.props.filter.text !== "" && this.props.onSearch("");
     }
 
     render() {

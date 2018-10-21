@@ -5,6 +5,7 @@ import Tile from '../components/Tile.js';
 import Error from '../components/Error';
 import PropTypes from 'prop-types';
 import { fetchContent } from '../actions/contentList';
+import {selectorHasMorePages} from '../reducer';
 
 class ContentList extends Component {
 
@@ -12,9 +13,9 @@ class ContentList extends Component {
     contentList: PropTypes.shape({
       fetching: PropTypes.bool.isRequired,
       fetched: PropTypes.bool.isRequired,
-      hasMore: PropTypes.bool.isRequired,
       data: PropTypes.object.isRequired
-    }).isRequired
+    }).isRequired,
+    hasMore : PropTypes.bool.isRequired
   }
 
   renderCard(key, item){
@@ -57,7 +58,7 @@ class ContentList extends Component {
   // }
 
   render() {
-    let { error, hasMore, fetching, fetched } = this.props.contentList;
+    let { error, fetching, fetched } = this.props.contentList;
     let content = this.renderContent();
     return (
       <div className="container m-auto pl-2 pr-2">
@@ -66,7 +67,7 @@ class ContentList extends Component {
 
         {fetched && content.length === 0 && <div className="text-white text-3xl text-center">No results found.</div>}
         
-        <LazyLoader loadData={this.props.fetchContent} hasMore={hasMore}
+        <LazyLoader loadData={this.props.fetchContent} hasMore={this.props.hasMore}
           isFetching={fetching} hasError={error}>
           <div className="flex flex-wrap">
             {content.length > 0 && content}            
@@ -81,6 +82,7 @@ class ContentList extends Component {
 //map state supplied by redux to props
 const mapStateToProps = (state, ownProps) => ({
   contentList: state.contentList.list,
+  hasMore : selectorHasMorePages(state),
   filter: state.contentList.filter
 });
 
